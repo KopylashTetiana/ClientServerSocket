@@ -7,6 +7,7 @@ public class Server {
 
         try (ServerSocket server = new ServerSocket(8000);) {
             System.out.println("Server started!");
+            while(true)
             try (
                 Socket socket = server.accept();
                 BufferedWriter writer =
@@ -16,8 +17,7 @@ public class Server {
                 BufferedReader reader =
                     new BufferedReader(
                             new InputStreamReader(
-                                    socket.getInputStream()));)
-            {
+                                    socket.getInputStream()));) {
                 String request = reader.readLine();
                 System.out.println("Request: " + request);
                 String response = "Hello from server: " + request.length();
